@@ -1,0 +1,38 @@
+*,
+*::after,
+*::before {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit; /* domyslny model pudelkowy dla przegladarki uzytkownika > lf body*/
+}
+
+html {
+    // this defines what 1rem = 10px; 10px/16px = 62.5%
+    font-size: 62.5%; /* Domysla czcionka to 16px - co daje w tym przypadku 10px */
+
+    @include respond(tab-land) { //width < 1200px ?
+      font-size: 56.25%; //1rem = 9px
+    }
+
+    @include respond(tab-port) {  //width < 900px ?
+      font-size: 50%; //1rem = 8px
+    }
+
+    @include respond(big-desktop) {
+      font-size: 75%;
+    }
+}
+
+body {
+    box-sizing: border-box; /* dobra praktyka jest umieszczenie konkretnego box-sizing w body*/
+    padding: 3rem;
+
+    @include respond(tab-port) {
+      padding: 0px;
+    }
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
